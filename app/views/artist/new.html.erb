@@ -1,0 +1,37 @@
+<head>
+      <script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
+</head>
+
+<body>
+<div class="new_formm">
+  <i class="fa fa-coffee fa-4x"></i>
+<h2>新規登録</h2>
+
+<div class="back_white">
+<%= form_tag("/users/create") do %>
+  <p>お名前</p>
+  <input name="artist_name" placeholder="お名前" value="<%= @artist.artist_name %>">
+
+  <p>郵便番号</p>
+  <input id="image"   value="<%= @artist.imagge %>">
+  <p>住所</p>
+  <input id="frequency_place"  value="<%= @artist.frequency_place %>">
+  <p>電話番号</p>
+  <input name="twitter_id"  value="<%= @artist.twitter_id %>">
+  <p>メールアドレス</p>
+  <input name="hp_url"  value="<%= @artist.hp_url %>">
+  <p>メールアドレス確認用</p>
+  <input name="message" value="<%= @artist.message %>" >
+  
+  <input type="submit" value="送信">
+<% end %>
+</div>
+</div>
+<!--エラーメッセージ-->
+<span style="color:red;">
+  <% @user.errors.full_messages.each do |message| %>
+  <%= message %>
+  <% end %>
+</span>
+
+</body>

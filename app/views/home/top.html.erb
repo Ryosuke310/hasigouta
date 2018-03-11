@@ -1,0 +1,332 @@
+<div class="margintop50px"></div>
+<!--スライドショー-->
+
+<!--<div id="hello">-->
+<!--  <a href=""><img src="/image01.jpg"></a>-->
+<!--  <a href=""><img src="/image02.jpg"></a>-->
+<!--  <a href=""><img src="/image03.jpg"></a>-->
+<!--  <a href=""><img src="/image04.jpg"></a>-->
+<!--</div>-->
+
+<!--トップスライドショー-->
+<!--<script>-->
+<!--  $(function() {-->
+<!--    $('#hello').not('.data-turbolinks').coinslider();-->
+<!--    $('#hello').attr({'class' : 'data-turbolinks'})-->
+<!--  });-->
+<!--</script>-->
+
+
+<div class="video-wrap">
+  <p class="video_p">はしご歌</p>
+  <video src="/topvideo.mp4"  width="100%" autoplay loop>
+  </video>
+</div>
+<div class="margintop50px"></div>
+
+<!--jsカレンダー-->
+<!--ゴリラアイコンと年月-->
+<div id="back_image1">
+  <div class="margintop80px"></div>
+  <h2 class="calendar-title"><img class="icon icons8-ゴリラ" width="48" height="48" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEQUlEQVRoQ8WZjZUNQRCF70aACBABIkAEiICNABEgAisCRIAIEAEisCJgI+B8T9c7/Xpqpqt65tHnvLM/r6e6bv3e6jnR8dcdSY8lXZbE76xPkt5Ierv2+JO1AhaevynpnaRrC3u+SjqVxM+hdSwAjyS9LFbvKfZL0t1REMcAgOW/9LRuvgfELUnnyed0DAAoD4jsIi/wRGptDYDQeZ3S4HAzAAASXlsD+N5J2p5iHyTd722qv98SwEjse7qmdEpt7ljmuaRnQev9kETi3nD2p3RKbe4oR+zeDgD4XDU0S3aa3JNSSjFEeG0J4Gew7tO0KJkoTdkk6Ul+1itJ/w3A77DZ/nZfqAQg8IJ9EGFgQuJGPQCnuVcONn4TOrDa9EDS+1K1yAc+ePFKRlAWAJaCIowqXetmACibfAAA6UvplNmMu6nz/NxiPS1JS/IC4KOki2P2AWL24RaaFxlYnHjHIOYF/qaZ8V1oZTwQrTKhgzubyA0MBpjFlQGQqTK9c6Pf01vIlVmPZAAg5FL05MF9dOirzbP0DUieCyIDYOsc8DDS2ADRdnQaHMk+WRkAjIZUoeiCMpCgHt9ZkkF1ohvX3gbY9bUAeD7L9+m4WC4Dgrgneek39XKNnfHACAAsR/xSVTIgsHb9DGHlXg5kAIzyfUICq2bmZJ4BPLcaLK5fXI6UATCaxMY+M8/bZAYIqhLeoJyuSuLRYZ1DLQGjRcCSFsUhjSxjsP3EKCyT6QrSZtcdWDITx/VBNqybRSOVjOiopzy3EnkhRKxDrIy0vSiCMiHQKmgAolMbz7cA+J8x2L18D0DtNjbSAQkBAxax3hyAqBG+lfPOCsU2eZNk9gB4pM3aOQJHGCkGIASiHqAKcVa7v56nd6A8AHOkDRAWTplcMGtyXiSPqPk27GPMehENBxObB6CXaAjJDDXIoxDwHIph1SVSaPkyd01zoLMHYE25nMuPmoxBLVqaYM/Vw743/dXedEOoTZqRhJ17pr73bL3MKEnJtvcEdGDvinFy9Vh7IMs2s+Dq2+faUCgFTTC+X98TtWdYDrpl9JjWtwOtGmFtziOc7DaavEL5pcvdycuQ2gNrb5YjHrFcQNl2worO3MatJjnwL2beg8MbxJES2yb7vg9E458qwN41s/EcA452aUDsk9mEEZPwn96inrdvFFvqMSKDZzAMsiPG2XvSAESGlbmpKHMwii69RsqMrDvda3f2csDl48XcUQ+yfcIoG5dFQmnigaXai/xJ/XXiJGo9Y7dL14eU1/Zmoj1y11c8zu3FMMIA0VvUcCzYi+PZe55ygJG53hx9CoBo/e8divJQANzbe088e89T5l/GSHKlV1jOAdCL/drqXhWy76Nc3/bPlVPTJ8R6EdKjzzWApQoSST6TNXvPU0IwOjRdAIDkg5f04pZpyN6keLkAPUAOe5Zk0QxrDtTKsjeWvbdAeOjsDzIU7p9q6dSvAAAAAElFTkSuQmCC">
+  <span id="js-year"></span>年 <span id="js-month"></span>月</h2>
+  
+    <div class="margintop30px"></div>
+  <table class="calendar-table">
+    <thead>
+      <tr><th><span style="color:red">日</span></th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th><span style="color:blue">土</span></th></tr>
+    </thead>
+    <tbody id="js-calendar-body"></tbody>
+  </table>
+</div>
+<script>
+var $window = $(window);
+var $year = $('#js-year');
+var $month = $('#js-month');
+var $tbody = $('#js-calendar-body');
+ 
+var today = new Date();
+var currentYear = today.getFullYear(),
+    currentMonth = today.getMonth();
+ 
+$window.on('turbolinks:load',function(){
+  calendarHeading(currentYear, currentMonth);
+  calendarBody(currentYear, currentMonth, today);
+});
+ 
+function calendarBody(year, month, today){
+  var todayYMFlag = today.getFullYear() === year && today.getMonth() === month ? true : false; // 本日の年と月が表示されるカレンダーと同じか判定
+  var startDate = new Date(year, month, 1); // その月の最初の日の情報
+  var endDate  = new Date(year, month + 1 , 0); // その月の最後の日の情報
+  var startDay = startDate.getDay();// その月の最初の日の曜日を取得
+  var endDay = endDate.getDate();// その月の最後の日の曜日を取得
+  var textSkip = true; // 日にちを埋める用のフラグ
+  var textDate = 1; // 日付(これがカウントアップされます)
+  var tableBody =''; // テーブルのHTMLを格納する変数
+  for (var row = 0; row < 6; row++){
+    var tr = '<tr>';
+    for (var col = 0; col < 7; col++) {
+      if (row === 0 && startDay === col){
+        textSkip = false;
+      }
+      if (textDate > endDay) {
+        textSkip = true;
+      }
+      
+      var addClass = todayYMFlag && textDate === today.getDate() ? 'is-today' : '';
+      var textTd = textSkip ? '&nbsp;' : textDate++;
+      if (month + 1 < 10 && textTd < 10) {
+        var addLink = year + '0' + String(month + 1) + '0' + textTd;
+      } else if (month + 1 >= 10 && textDate < 10) {
+        var addLink = year + String(month + 1) + '0' + textTd;
+      } else if (month + 1 < 10 && textDate >= 10) {
+        var addLink = year + '0' + String(month + 1) + textTd;
+      } else {
+        var addLink = year + String(month + 1) + textTd;
+      }
+      addLink = textSkip ? '&nbsp;' : '<a href="/event/'+addLink+'/show">'+textTd+'</a></td>'
+      var td = '<td class="'+addClass+'">'+ addLink;
+      tr += td;
+    }
+    tr += '</tr>';
+    tableBody += tr;
+  }
+  $tbody.html(tableBody);
+}
+ 
+function calendarHeading(year, month){
+  $year.text(year);
+  $month.text(month + 1);
+}
+</script>
+
+
+        <div class="margintop50px"></div>
+
+<!--アーティスト一覧（順番ランダム）-->
+<div id="back_image2">
+    <div id="artist_index">
+        <h2 id="link1" name="link1"><span class="fa fa-hand-o-right"></span>アーティスト一覧</h2>
+        
+        <!--カード型アーティスト一覧-->
+        <div class="float_kaizyo">
+            <ul class="sample">
+                <% @artists.shuffle.each do |artist| %>
+                <li>
+                    <section class="card">
+                      <!--写真のホバーアクション-->
+                    <figure class="imghvr-fade">
+                    <img class="card-img" src="/<%= artist.image %>" width="100%" alt="">
+                    <figcaption>
+                      <%= artist.message %>
+                    </figcaption>
+                    </figure>
+                        <div class="card-content">
+                          <h1 class="card-title"><%= artist.artist_name %></h1>
+                          <p class="card-text"><%= artist.message %></p>
+                        </div>
+                        
+                        <div class="card-link">
+                          <%= link_to("詳しく見る","artist/#{artist.id}/show") %>
+                          <% if current_user %>
+                              <!--応援ボタン-->
+                             <% if Encourage.find_by(user_id: current_user.id, artist_id: artist.id) %>
+                                     <%= link_to("/encourage/#{artist.id}/destroy", {method:"post"}) do %>
+                                         <span style="color:red;"><span class="fa fa-bullhorn"></span>応援<%= Encourage.where(artist_id:artist.id).count %></span>
+                                     <% end %>
+                                 <% else %>
+                                     <%= link_to("/encourage/#{artist.id}/create", {method:"post"}) do %>
+                                     <span class="fa fa-bullhorn"></span>応援<%= Encourage.where(artist_id:artist.id).count %>
+                                 <% end %>
+                             <% end %>
+                          <% else %>
+                             <a href="/user/user_artist"><span class="fa fa-bullhorn"></span>応援<%= Encourage.where(artist_id:artist.id).count %></a>
+                          <% end %>
+                          <a href="#"><span class="fa fa-bitcoin"></span>コインを送る</a>
+                        </div>
+                   </section>
+                 </li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</div>
+        <div class="margintop80px"></div>
+ 
+<!--新着記事（新着順）       -->
+<div id="back_image3">
+    <div id="new-blog">
+        <h2 id="link2" name="link2"><span class="fa fa-eye"></span>新着記事</h2>
+        <div class="article_layout">
+            
+            <div class="article_start"></div>
+            <div class="margintop30px"></div>
+            <div class="article_dotted"></div>
+            <!--記事のタイトル-->
+        <% @blogs.each do |blog| %>
+            <div class="article_title">
+                <h3><%= link_to(blog.title,"/blog/#{blog.id}") %></h3>
+            </div>
+                <br>
+            <!--記事の内容-->
+            <ul class="article_ul">
+                <div class="article_content">
+                    <li class="article_li"><p><%= link_to(blog.content,"blog/#{blog.id}") %></p></li>
+                </div>
+            </ul>
+            <!--いいね！ボタン-->
+            <% if user_signed_in? %>
+                <% if Like.find_by(user_id: current_user.id, blog_id: blog.id) %>
+                     <%= link_to("/like/#{blog.id}/destroy", {method:"post"}) do %>
+                         <span style="color:red;"><span class="fa fa-heart like-btn"></span></span>
+                     <% end %>
+                <% else %>
+                    <%= link_to("/like/#{blog.id}/create", {method:"post"}) do %>
+                        <span style="color:#FFFFE0;"><span class="fa fa-heart like-btn"></span></span>
+                        <% Like.where(blog_id:blog.id) %>
+                    <% end %>
+                <% end %>
+            <% else %>
+                <div class="like_link_color"><a href="/user/user_artist"><span class="fa fa-heart like-btn"></span></a></div>
+            <% end %>
+            <!--いいねカウント-->
+            <%= Like.where(blog_id:blog.id).count %>
+            <div class="article_dotted"></div>
+        <% end %>
+        </div>
+    </div>
+</div>
+        <div class="margintop80px"></div>
+
+<!--アーティストへの応援数でソート-->
+<div id="new-blog">
+    <h2 id="link3" name="link3"><span class="fa fa-fire"></span>人気アーティスト</h2>
+    
+     <!--カード型アーティスト一覧-->
+      <div class="float_kaizyo">
+         
+        <ul class="sample">
+        
+            <% @artists.each do |artist| %>
+              <li class="slide">
+                <section class="card">
+                  <!--写真のhoverアクション-->
+                <figure class="imghvr-fade">
+                <img class="card-img" src="/<%= artist.image %>" width="100%" alt="">
+                <figcaption>
+                  <%= artist.message %>
+                </figcaption>
+                </figure>
+                    <div class="card-content">
+                      <h1 class="card-title"><%= artist.artist_name %></h1>
+                      <p class="card-text"><%= artist.message %></p>
+                    </div>
+                    
+                    <div class="card-link">
+                      <%= link_to("詳しく見る","artist/#{artist.id}/show") %>
+                       <!--応援ボタン-->
+                        <% if user_signed_in? %>
+                             <% if Encourage.find_by(user_id: current_user.id, artist_id: artist.id) %>
+                                 <%= link_to("/encourage/#{artist.id}/destroy", {method:"post"}) do %>
+                                     <span style="color:red;"><span class="fa fa-bullhorn"></span>応援<%= Encourage.where(artist_id:artist.id).count %></span>
+                                     <% end %>
+                                     <% else %>
+                                     <%= link_to("/encourage/#{artist.id}/create", {method:"post"}) do %>
+                                     <span class="fa fa-bullhorn"></span>応援<%= Encourage.where(artist_id:artist.id).count %>
+                                 <% end %>
+                             <% end %>
+                        <% else %>
+                            <a href="/user/user_artist"><span class="fa fa-bullhorn"></span>応援<%= Encourage.where(artist_id:artist.id).count %></a>
+                        <% end %>
+                      <a href="#"><span class="fa fa-bitcoin"></span>コインを送る</a>
+                    </div>
+                </section>
+              </li>
+            <% end %>
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="margintop50px"></div>
+
+<!--ブログへのいいね数でソート-->
+<div id="new-blog">
+    <h2 id="link4" name="link4"><span class="fa fa-bolt"></span>人気記事</h2>
+     <div class="article_layout">
+        
+        <div class="article_start"></div>
+        <div class="margintop30px"></div>
+        <div class="article_dotted"></div>
+        <!--記事のタイトル-->
+    <% @blogs.each do |blog| %>
+        <div class="article_title">
+            <h3><%= link_to(blog.title,"/blog/#{blog.id}") %></h3>
+        </div>
+            <br>
+        <!--記事の内容-->
+        <ul class="article_ul">
+                <div class="article_content">
+                   <li class="article_li"><p><%= link_to(blog.content,"blog/#{blog.id}") %></p></li>
+                </div>
+            
+        </ul>
+        <!--いいね！ボタン-->
+        <% if current_user %>
+            <% if Like.find_by(user_id: current_user.id, blog_id: blog.id) %>
+                 <%= link_to("/like/#{blog.id}/destroy", {method:"post"}) do %>
+                     <span style="color:red;"><span class="fa fa-heart like-btn"></span></span>
+                 <% end %>
+            <% else %>
+                <%= link_to("/like/#{blog.id}/create", {method:"post"}) do %>
+                    <span style="color:#FFFFE0;"><span class="fa fa-heart like-btn"></span></span>
+                    <% Like.where(blog_id:blog.id) %>
+                <% end %>
+            <% end %>
+        <% else %>
+            <div class="like_link_color"><a href="/user/user_artist"><span class="fa fa-heart like-btn"></span></a></div>
+        <% end %>
+        <!--いいねカウント-->
+        <%= Like.where(blog_id:blog.id).count %>
+        <div class="article_dotted"></div>
+    <% end %>
+    </div>
+</div>
+<div class="margintop50px"></div>
+<!--記事の文字数カットスクリプト-->
+<script>
+$(document).on('turbolinks:load', function(){
+    var $setElm = $('.article_li');
+    var cutFigure = '5'; // カットする文字数
+    var afterTxt = ' …'; // 文字カット後に表示するテキスト
+ 
+    $setElm.each(function(){
+        var textLength = $(this).text().length;
+        var textTrim = $(this).text().substr(0,(cutFigure))
+ 
+        if(cutFigure < textLength) {
+            $(this).html(textTrim + afterTxt).css({visibility:'visible'});
+        } else if(cutFigure >= textLength) {
+            $(this).css({visibility:'visible'});
+        }
+    });
+});
+</script>
+
+<!--スライド-->
+<script>
+  $(document).on('turbolinks:load', function(){
+    var slider = $('.sample').not('.slick-initialized').slick({
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      centerMode: true,
+      variableWidth: true
+    });
+    
+    slider.slick('setPosition');
+  }); 
+</script>
+

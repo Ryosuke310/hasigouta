@@ -1,0 +1,20 @@
+<div class="center_other">
+        <%= form_tag("/event/create") do %>
+        　　　　<p>パフォーマンスをする県</p>
+        　　　　<input name="place_prefecture" value="<%= @event.place_prefecture %>">
+        　　　　<p>パフォーマンスをする市町村</p>
+        　　　　<input name="place_city" value="<%= @event.place_city %>">
+        　　　　<p>パフォーマンスをする最寄駅</p>
+        　　　　<input name="place_station" value="<%= @event.place_station %>">
+        　　　　<p>場所の詳細</p>
+                <input name = "place_detail" value="<%= @event.place_detail %>" ></textarea>
+                <p>年月日</p>
+                <input type="date" name="date">
+                <p>内容詳細</p>
+                <input name = "event_detail" value="<%= @event.event_detail %>" ></textarea>
+                <br>
+                <div class="margintop30px"></div>
+                <input type="submit" value="登録する">
+                
+        <% end %>
+</div>

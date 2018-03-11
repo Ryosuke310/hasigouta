@@ -1,0 +1,13 @@
+<%= @event.place_prefecture %><br>
+<%= @event.place_city %><br>
+<%= @event.place_station %><br>
+<%= @event.place_detail %><br>
+<%= @event.year %><br>
+<%= @event.month %><br>
+<%= @event.day %><br>
+<%= @event.time %><br>
+<%= @event.event_detail %><br>
+
+<% if artist_signed_in? %>
+  <%= link_to("イベント内容を編集する", "/event/#{@event.id}/edit") %>
+<% end %>

@@ -1,0 +1,26 @@
+// Place all the styles related to the Event controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+table.type03 {
+  margin:0 auto;
+  height:100px;
+  width:25%;
+	border-collapse: collapse;
+	text-align: left;
+	border-top: 1px solid white;
+	border-left: 3px solid white;
+}
+table.type03 th {
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-right: 1px solid white;
+	border-bottom: 1px solid white;
+
+}
+table.type03 td {
+	padding: 10px;
+	vertical-align: top;
+	border-right: 1px solid white;
+	border-bottom: 1px solid white;
+}

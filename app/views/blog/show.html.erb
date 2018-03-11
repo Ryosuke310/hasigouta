@@ -1,0 +1,61 @@
+
+    <div class="margintop50px"></div>
+    
+<div class="center_other">
+    <div class="width40">
+        Title：『<%= @blog.title %>』<br>
+            <div class="margintop20px"></div>
+        Content：<%= @blog.content %><br>
+            <div class="margintop20px"></div>
+        作者：<%= @artist.artist_name %><br>
+        <div class="margintop10px"></div>
+        <%= @blog.created_at %><br>
+        <div class="margintop10px"></div>
+    </div>
+</div>
+
+ <!--いいね！ボタン-->
+<div class="center_other">
+        <% if current_user %>
+            <% if Like.find_by(user_id: current_user.id, blog_id: @blog.id) %>
+                 <%= link_to("/like/#{@blog.id}/destroy", {method:"post"}) do %>
+                     <span style="color:red;"><span class="fa fa-heart like-btn"></span></span>
+                 <% end %>
+            <% else %>
+                <%= link_to("/like/#{@blog.id}/create", {method:"post"}) do %>
+                    <span style="color:#FFFFE0;"><span class="fa fa-heart like-btn"></span></span>
+                    <% Like.where(blog_id:@blog.id) %>
+                <% end %>
+            <% end %>
+        <% else %>
+            <div class="like_link_color"><a href="/user/user_artist"><span class="fa fa-heart like-btn"></span></a></div>
+        <% end %>
+        <!--いいねカウント-->
+        <%= Like.where(blog_id:@blog.id).count %>
+</div>
+    
+<div class="margintop50px"></div>
+
+<!--以下コメント-->
+<div class="center_other">
+        <% @comments.each do |comment| %>
+            <div class="balloon">
+        『<%= comment.content %>』
+        <br>
+        <div class="user_name_right"><%= comment.user.user_name %></div>
+            </div>
+        <br>
+        <% end %>
+</div>
+
+<div class="margintop50px"></div>
+
+<!--新規コメント-->
+<div class="center_other">
+        <%= form_tag("/comment/create") do %>
+        <input type="hidden" name="blog_id" value="<%= @blog.id %>">
+        <textarea name="content"></textarea>
+        <br>
+        <input type="submit" value="コメントする">
+        <% end %>
+</div>

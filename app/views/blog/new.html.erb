@@ -1,0 +1,14 @@
+
+<div class="margintop50px"></div>
+<div class="center_other">
+  <%= form_tag("/blog/create") do %>
+    <p>タイトル</p>
+    <textarea name="title"></textarea>
+    <br>
+    <p>内容</p>
+    <textarea name="content"></textarea>
+    <br>
+    <div class="margintop30px"></div>
+    <input type="submit" value="投稿する">
+  <% end %>
+</div>

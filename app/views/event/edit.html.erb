@@ -1,0 +1,19 @@
+<%= form_tag("/event/#{@event.id}/update") do %>
+  <p>パフォーマンスをする県</p>
+　<input name="place_prefecture" value="<%= @event.place_prefecture %>">
+　<p>パフォーマンスをする市町村</p>
+　<input name="place_city" value="<%= @event.place_city %>">
+　<p>パフォーマンスをする最寄駅</p>
+　<input name="place_station" value="<%= @event.place_station %>">
+　<p>場所の詳細</p>
+  <input name = "place_detail" value="<%= @event.place_detail %>" ></textarea>
+  <p>日にち</p>
+  <input name="date" value="<%= @event.year %>-<%= @event.month %>-<%= @event.day %>">
+  <p>時間</p>
+  <input name="time" value="<%= @event.time %>">
+  <p>内容詳細</p>
+  <input name = "event_detail" value="<%= @event.event_detail %>" ></textarea>
+  <br>
+  <input type="submit" value="保存">
+<% end %>
+

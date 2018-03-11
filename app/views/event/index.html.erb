@@ -1,0 +1,17 @@
+<div class="center_other">
+    <% @events.each do |event| %>
+      <div class="margintop10px"></div>
+        <%= event.place_prefecture %><br>
+        <%= event.place_city %><br>
+        <%= event.place_station %><br>
+        <%= event.place_detail %><br>
+        <%= event.year %><br>
+        <%= event.month %><br>
+        <%= event.day %><br>
+        <%= event.time %><br>
+        <%= event.event_detail %><br>
+        <%= link_to("詳細を見る", "/event/#{event.id}") %><br>
+        <%= link_to("編集する", "/event/#{event.id}/edit") %><br>
+        <%= link_to("削除する", "/event/#{event.id}/destroy", {method:"post"}) %><br>
+    <% end %>
+</div>

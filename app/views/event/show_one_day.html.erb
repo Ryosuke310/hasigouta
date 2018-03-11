@@ -1,0 +1,23 @@
+<div class="center_other">
+    <h2><%= @year %>年<%= @month %>月<%= @day %>日のイベント</h2>
+    <br>
+    <% @events.each do |event| %>
+    <% artist = Artist.find_by(id: event.artist_id) %>
+    <div class="margintop30px"></div>
+        <table class="type03">
+    	<tr>
+    		<th scope="row">アーティスト名</th>
+    		<td><%= artist.artist_name %></td>
+    	</tr>
+    	<tr>
+    		<th scope="row">駅</th>
+    		<td><%= event.place_station %></td>
+    	</tr>
+    	<tr>
+    		<th scope="row">時間</th>
+    		<td><%= event.time %></td>
+    	</tr>
+        </table>
+    <% end %>
+</div>   
+

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>hashigouta</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <%= csrf_meta_tags %>
+    <script>
+    $(document).on ('turbolinks:load', function() {
+      console.log("turbolinks:load");
+    });
+    $(document).on ('turbolinks:click', function() {
+      console.log("turbolinks:click");
+    });
+    $(document).on ('turbolinks:before-visit', function() {
+      console.log("turbolinks:before-visit");
+    });
+    $(document).on ('turbolinks:request-start', function() {
+      console.log("turbolinks:request-start");
+    });
+    $(document).on ('turbolinks:visit', function() {
+      console.log("turbolinks:visit");
+    });
+    $(document).on ('turbolinks:request-end', function() {
+      console.log("turbolinks:request-end");
+    });
+    $(document).on ('turbolinks:before-cache', function() {
+      console.log("turbolinks:before-cache");
+    });
+    $(document).on ('turbolinks:before-render', function() {
+      console.log("turbolinks:before-render");
+    });
+    $(document).on ('turbolinks:render', function() {
+      console.log("turbolinks:render");
+    });
+  </script>
+</head>
+
+<body>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>  
+    
+  <!--タイトル-->
+  <!--<h1 class="lead">はしご歌</h1>-->
+  
+  <!--<script>-->
+  <!--$(document).on ('turbolinks:load', function () {-->
+  <!--    $('.lead').textillate({loop: true});-->
+  <!--});-->
+  <!--</script>-->
+  
+  <!--<div class="margintop40px"></div>-->
+  <!--<p class="subtitle"><a href="/">~酒場を"はしご"するように歌を"はしご"する~</a></p>-->
+  <!--    <div class="margintop50px"></div>-->
+  <!--タイトル下テーブル-->
+  <!--<% if user_signed_in? %>-->
+  <!--    <p><%= current_user.user_name %>としてログイン中</p>-->
+  <!--<% elsif artist_signed_in? %>-->
+  <!--    <p><%= current_artist.artist_name %>としてログインしています</p>-->
+  <!--<% else %>-->
+  <!--    <div class="table">-->
+  <!--        <div id="artist_in">-->
+  <!--         <a href="/artists/sign_up"><span class="fa fa-music"></span>アーティストの方はこちら</a>-->
+  <!--        </div>-->
+  <!--        <div id="user_in">-->
+  <!--         <a href="/users/sign_up"><span class="fa fa-user"></span>一般の方はこちら</a>-->
+  <!--        </div>  -->
+  <!--    </div>-->
+  <!--<% end %>-->
+<!--ハンバーガーメニュー-->
+<!--<input id="menu-cb" type="checkbox" value="off">-->
+<!--<label id="menu-icon" for="menu-cb">≡</label>-->
+<!--<label id="menu-background" for="menu-cb"></label>-->
+<!--  <div id="ham-menu">-->
+<!--    <ul>-->
+<!--        <li><%= link_to("TOPページへ","/") %></li>-->
+<!--        <div class="margintop20px"></div>-->
+<!--        <li><%= link_to("はしご歌とは","/about") %></li>-->
+<!--        <div class="margintop20px"></div>-->
+<!--        <li><%= link_to("路上ライブの楽しみ方","/howtoenjoy") %></li>-->
+<!--        <div class="margintop20px"></div>-->
+        <!--イベント・ブログは後々アーティストだけに-->
+<!--        <li><%= link_to("イベントを投稿する","/event/new") %></li>-->
+<!--        <div class="margintop20px"></div>-->
+<!--        <li><%= link_to("イベントの修正・削除","/event/edit") %></li>-->
+<!--        <div class="margintop20px"></div>-->
+<!--        <li><%= link_to("ブログを投稿する", "/blog/new") %></li>-->
+<!--        <div class="margintop20px"></div>-->
+<!--        <li><%= link_to("ビットコインを入金","#") %></li>-->
+<!--        <div class="margintop20px"></div>-->
+<!--        <li><%= link_to("MAGOKORO","#") %></li>-->
+<!--        <div class="margintop20px"></div>-->
+<!--        <% if user_signed_in? %>-->
+<!--        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>-->
+<!--        <% end %> -->
+<!--        <% if artist_signed_in? %>-->
+<!--        <li><%= link_to "ログアウト", destroy_artist_session_path, method: :delete %></li>-->
+<!--        <% end %> -->
+<!--        <div class="margintop20px"></div>-->
+<!--        <li>会社サイトへ</li>-->
+<!--    </ul>-->
+<!--  </div>-->
+  
+<div id="menu-background"></div>
+<!--終わり-->
+
+
+
+<%= yield %>
+
+<!-- フッタ開始 -->
+<footer id="footer">
+
+        <ul class="nl">
+        <li class="first"><a href="type1_design1_top.html">会社情報</a></li>
+        <li><a href="/about">はしご歌とは</a></li>
+        </ul>
+        
+        <ul class="nl guide">
+        <!--<li><a href="first">特定商取引に基づく表記</a></li>-->
+        <!--<li class="#"><a href="#">よくある質問</a></li>-->
+        <li><a href="/rule">利用規約</a></li>
+        <li><a href="/privacy">プライバシーポリシー</a></li>
+        <li><a href="/contact">お問い合わせ</a></li>
+        <!--<li><a href="#">アクセス</a></li>-->
+        </ul>
+        
+        <address>
+        <!--神奈川県川崎市多摩区宿河原1-19-30　ライオンズマンション宿河原第二603-->
+        <br>
+        Copyright (C) 2017 はしご歌. All Rights Reserved.
+        </address>
+        
+        </div>
+<!-- フッタ終了 -->
+</footer>
+
+
+
+</body>
+</html>
+

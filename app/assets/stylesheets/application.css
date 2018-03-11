@@ -1,0 +1,212 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require slick
+ *= require slick-theme
+ *= require animate
+ *= require coin-slider-styles
+ *= require imagehover.min
+ */
+ body{
+     font-family:'HanziPen SC','Bradley Hand','ヒラギノ角ゴシック','Yu Gothic UI';
+ }
+
+
+ /*マージントップ*/
+.margintop10px{
+    margin-top: 10px;
+}
+.margintop20px{
+    margin-top: 20px;
+}
+.margintop30px{
+    margin-top: 30px;
+}
+.margintop40px{
+    margin-top: 40px;
+}
+.margintop50px{
+    margin-top: 50px;
+}
+.margintop60px{
+    margin-top: 60px;
+}
+.margintop70px{
+    margin-top: 70px;
+}.margintop80px{
+    margin-top: 80px;
+}
+/*マージントップ終わり*/
+/*width設定*/
+.width40{
+  display:inline-block;
+  max-width:40%;
+}
+
+
+ /*はしご歌*/
+ .title{
+    text-align:center;
+    font-size:350%;
+    font-family: 'arial unicode ms';
+ }
+ .subtitle{
+     text-align: center;
+     font-size: 80%;
+     margin-top: -30px;
+ }
+/*はしご歌下テーブルレイアウト*/
+.table{
+ display: table;
+ margin: auto;
+}
+#artist_in{
+ text-align:center;
+ float: left;
+ margin: 0 20px;
+}
+#user_in{
+ text-align:center;
+ float: right;
+ margin:0 20px;
+}
+
+
+/*フッター*/
+#footer {
+padding: 15px 0 20px; /* フッタのパディング（上、左右、下） */
+border-top: 1px #c0c0c0 solid; /* フッタの上境界線 */
+margin-top:120px;
+}
+
+
+/* --- フッタメニュー --- */
+#footer ul.nl {
+margin: 0 0 10px; /* フッタメニューのマージン（上、左右、下） */
+padding: 0;
+list-style-type: none;
+text-align: center;
+}
+/* --- メニュー項目 --- */
+#footer ul.nl li {
+padding: 0 4px 0 8px; /* 項目のパディング（上右下左） */
+display: inline;
+}
+/* 最初の項目 */
+#footer ul.nl li.first {
+background-image: none; /* 区切り線なし */
+}
+/* ガイドメニュー */
+#footer ul.guide {
+margin: 0 0 15px; /* ガイドメニューのマージン（上書き） */
+}
+
+/* --- アドレス・コピーライト --- */
+#footer address {
+font-style: normal; /* 文字のスタイル（ノーマル） */
+text-align: center;
+line-height: 140%; /* 行の高さ */
+}
+
+#footer a{
+    color:black;
+}
+
+h1 a{
+    text-decoration: none;
+}
+h1{
+  font-family: 'Hannotate SC','Marker Felt','Comic Sans MS';
+}
+.lead{
+  text-align: center;
+  font-size:450%;
+  font-family: 'Hannotate SC','Marker Felt','Comic Sans MS';
+}
+/*h2で中央寄せする要素*/
+.h2 center{
+    text-align: center;
+}
+
+.h2color_normal{
+}
+ /*カード以外の要素をセンター*/
+.center_other{
+    text-align:center;
+}
+/*ハンバーガーメニュー*/
+#ham-menu {
+    background-color: #fff; /*メニュー背景色*/
+    box-sizing: border-box;
+    height: 100%;
+    padding: 10px 40px; /*メニュー内左右上下余白*/
+    position: fixed;
+    right: -300px; /*メニュー横幅 width と合わせる*/
+    top: 0;
+    transition: transform 0.3s linear 0s; /*0.3s はアニメーションにかかる時間*/
+    width: 300px; /*メニュー横幅*/
+    z-index: 1000;
+    color:#696969;
+}
+#ham-menu a{
+}
+#menu-background {
+    background-color: #333; /*黒背景*/
+    display: block;
+    height: 100%;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: all 0.3s linear 0s; /*0.3s はアニメーションにかかる時間*/
+    width: 100%;
+    z-index: -1;
+}
+
+#menu-icon {
+    background-color: #fff; /*アイコン部分背景色*/
+    border-radius: 0 0 0 10px; /*左下角丸*/
+    color: #333; /*アイコン（フォント）色*/
+    cursor: pointer;
+    display: block;
+    font-size: 50px; /*アイコン（フォント）サイズ*/
+    height: 50px; /*アイコン縦高さ*/
+    line-height: 50px; /*縦位置中央化*/
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 50px; /*アイコン横幅*/
+    transition: all 0.3s linear 0s; /*0.3s はアニメーションにかかる時間*/
+    z-index: 1000;
+}
+
+#menu-cb {
+    display: none; /*チェックボックス本体は消しておく*/
+}
+
+#menu-cb:checked ~ #ham-menu,
+#menu-cb:checked ~ #menu-icon {
+    transform: translate(-300px); /*メニュー本体横幅 width と合わせる*/
+}
+
+#menu-cb:checked ~ #menu-background {
+    opacity: 0.5;
+    z-index: 999;
+}
+
+
+.textleft{
+  text-align: left;
+}

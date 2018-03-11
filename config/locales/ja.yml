@@ -1,0 +1,22 @@
+ja:
+    activerecord:
+        models:
+            user: ユーザ
+        attributes:
+            user:
+                id: ユーザID
+                user_name: 名前
+                password: パスワード
+     
+    activerecord:
+        models:
+            artist: アーティスト
+        attributes:
+            artist:
+                id: アーティストID
+                artist_name: アーティスト名
+                image: 写真
+                frequency_place: よくやる場所
+                twitter_id: twitterのID
+                hp_url: HPページのURL
+                message: メッセージ

@@ -1,0 +1,53 @@
+// Place all the styles related to the blog controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.balloon {
+  background-color: #fff;
+  padding: 20px;
+  position: relative;
+  display:inline-block;
+  margin-top:50px;
+  border-radius: 10px;        /* CSS3草案 */  
+  -webkit-border-radius: 10px;    /* Safari,Google Chrome用 */  
+  -moz-border-radius: 10px;   /* Firefox用 */ 
+  border:solid 1px #808080;
+  color:#696969;
+}
+.balloon:after {
+  border-bottom: 12px solid #fff;
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  content: '';
+  // margin-left: -10px;
+  position: absolute;
+  // top: -12px;
+  // left: 70%;
+}
+
+p{
+    text-align:center;
+    font-size: .9em;
+}
+
+.balloon:before {
+    content: "";
+    display: inline-block;
+    border: 10px solid transparent;
+    border-bottom-color: #808080;
+    position: absolute;
+    left: 59%;
+    top: -20px;
+}
+.balloon:after {
+    content: "";
+    display: inline-block;
+    border: 9px solid transparent;
+    border-bottom-color: #fff;
+    position: absolute;
+    left: 59.3%;
+    top: -18px
+
+}
+.user_name_right{
+    text-align:right;
+}
